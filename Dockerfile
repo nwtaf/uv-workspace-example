@@ -28,8 +28,7 @@ FROM python:${PYTHON_VERSION}-bookworm AS runtime
 ENV PATH="/app/.venv/bin:$PATH"
 
 COPY --from=builder /app/.venv /app/.venv
-COPY --from=builder /app/run.py /app/run.py
 
 WORKDIR /app
 
-ENTRYPOINT [ "python", "run.py"]
+ENTRYPOINT [ "python", "-m", "my_app.main"]
