@@ -68,7 +68,17 @@ git clone https://github.com/nwtaf/uv-workspace-example.git
 uv run src/my_app/main.py
 ```
 
-This will print "Hello World!".
+✅ This one command will:
+
+- Automatically create a virtual environment (if it doesn’t already exist)
+
+- Read pyproject.toml and uv.lock to install the required dependencies
+
+- Correctly link local workspace dependencies (i.e. my_lib) to my_app
+
+- Execute the main.py module using the environment it just set up
+
+If everything is working correctly, it will print: "Hello World!"
 
 ---
 
