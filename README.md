@@ -1,8 +1,9 @@
 # UV Workspace Example
 
 This repository is a minimal working example of a [uv workspace](https://docs.astral.sh/uv/concepts/projects/workspaces/), demonstrating how to structure a Python monorepo using [uv](https://github.com/astral-sh/uv). It includes:
-- A CLI application (`src/my_app`)
 - A reusable library (`packages/my_lib`)
+- An application (`scr/my_app`)
+- A CLI tool (`src/my_cli`)
 - Tests for the CLI
 - Docker support for building and running the app
 
