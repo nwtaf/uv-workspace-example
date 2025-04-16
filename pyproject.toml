@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "my-app"
 version = "0.1.0"
@@ -5,12 +9,8 @@ description = "An example of uv workspace"
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
+    "click>=8.1.8",
     "my-lib",
-]
-
-[dependency-groups]
-dev = [
-    "ruff >= 0.8.1",
     "pytest >= 8.3.4",
 ]
 
@@ -19,3 +19,6 @@ my-lib = { workspace = true }
 
 [tool.uv.workspace]
 members = [ "packages/*" ]
+
+[project.scripts]
+hello-world = "my_cli.main:hello_world"

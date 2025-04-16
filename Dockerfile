@@ -1,34 +1,21 @@
-# syntax = docker/dockerfile:1.2
+# Using uv in Docker: https://docs.astral.sh/uv/guides/integration/docker/
+FROM ghcr.io/astral-sh/uv:alpine
 
-# choose your Python version
-ARG PYTHON_VERSION=3.9
-
-FROM python:${PYTHON_VERSION}-bookworm AS builder
-COPY --from=ghcr.io/astral-sh/uv:0.5.7 /uv /bin/uv
-
-ENV \
-    # do not buffer python output at all
-    PYTHONUNBUFFERED=1 \
-    # do not write `__pycache__` bytecode
-    PYTHONDONTWRITEBYTECODE=1
-
+# Set working directory, create it if it does not exist
 WORKDIR /app
 
+# Copy project into the image
 COPY . .
 
-RUN uv sync \
-        --frozen \
-        --compile-bytecode \
-        --no-editable \
-        --no-dev
+# Sync the the project with the virtual environment, using the frozen lockfile
+RUN uv sync --frozen
 
-
-FROM python:${PYTHON_VERSION}-bookworm AS runtime
-
+# Activate virtual environment by placing the project's binary at the front of the path
 ENV PATH="/app/.venv/bin:$PATH"
 
-COPY --from=builder /app/.venv /app/.venv
+# Helthcheck to ensure the application is running correctly
+HEALTHCHECK CMD uv healthcheck || exit 1
 
-WORKDIR /app
-
-ENTRYPOINT [ "python", "-m", "my_app.main"]
+# Call module or cli when container starts
+# ENTRYPOINT [ "python", "-m", "my_app.main"]
+CMD ["uv", "run", "hello-world", "--help"]
