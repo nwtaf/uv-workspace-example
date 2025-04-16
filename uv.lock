@@ -54,10 +54,6 @@ source = { editable = "." }
 dependencies = [
     { name = "click" },
     { name = "my-lib" },
-]
-
-[package.dev-dependencies]
-dev = [
     { name = "pytest" },
 ]
 
@@ -65,10 +61,8 @@ dev = [
 requires-dist = [
     { name = "click", specifier = ">=8.1.8" },
     { name = "my-lib", editable = "packages/my_lib" },
+    { name = "pytest", specifier = ">=8.3.4" },
 ]
-
-[package.metadata.requires-dev]
-dev = [{ name = "pytest", specifier = ">=8.3.4" }]
 
 [[package]]
 name = "my-lib"

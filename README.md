@@ -1,20 +1,19 @@
 # UV Workspace Example
 
-This repository is a **minimal working example** of a [uv workspace](https://docs.astral.sh/uv/concepts/projects/workspaces/), demonstrating how to structure a Python monorepo using [uv](https://github.com/astral-sh/uv). It includes:
-
+This repository is a minimal working example of a [uv workspace](https://docs.astral.sh/uv/concepts/projects/workspaces/), demonstrating how to structure a Python monorepo using [uv](https://github.com/astral-sh/uv). It includes:
 - A CLI application (`src/my_app`)
 - A reusable library (`packages/my_lib`)
 - Tests for the CLI
 - Docker support for building and running the app
 
-Each workspace member has its own `pyproject.toml`, and the project is managed by a single global `uv.lock` in the root.
+Each __workspace member__ has its own `pyproject.toml`, and the project is managed by a single global `uv.lock` in the root.
 
 ---
 
 ## 🚀 Features
 
 - ✨ Modern Python packaging with `pyproject.toml`
-- 🧪 Integrated tests using `pytest`
+- 🧪 Integrated testing using `pytest`
 - 🐳 Dockerfile for containerized builds
 - 🧱 Example of `uv` workspace dependency linking
 
@@ -127,6 +126,6 @@ This will launch the CLI tool via the container’s entrypoint.
 ---
 
 ## 🙌 Acknowledgments
-
+- [fedragon](https://github.com/fedragon/uv-workspace-example.git) for the original repository
 - [uv](https://github.com/astral-sh/uv) by Astral
 - [click](https://click.palletsprojects.com/) for the CLI interface
